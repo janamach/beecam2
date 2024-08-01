@@ -67,7 +67,7 @@ countn () {
 }
 
 record_video () {
-    sleep 5 && python3 /home/pi/beecam/led.py & \
+    sleep 5 && python3 /home/pi/beecam2/led.py & \
     VLENGTH=$((ans * 60000))
     yad --timeout-indicator=top --posx=90 --posy=245 --text-align=center \
     --timeout=$((ans * 60 + 5)) \
