@@ -163,8 +163,11 @@ timer_window () {
                 record_video
                 # Sleep between videos, but not after the last one
                 if [[ $c -lt $REPEATN ]]; then
-                    echo "Sleeping for $SLEEP_TIME minutes"
-                    sleep $((SLEEP_TIME * 60))
+                    # Show timeout indicator
+                    $(yad --timeout-indicator=top --posx=90 --posy=245 --text-align=center  --center --borders=20  \
+                    --timeout=$((SLEEP_TIME * 60 + 1)) \
+                    --text="<big><big><b>Waiting for ${SLEEP_TIME} minutes</b></big></big>" \
+                    --button="<big><big><b>Cancel video recording</b></big></big>:0")
                 fi
             done
             for video in $(cat videos); do
