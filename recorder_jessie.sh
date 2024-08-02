@@ -167,7 +167,12 @@ timer_window () {
                     $(yad --timeout-indicator=top --posx=90 --posy=245 --text-align=center  --center --borders=20  \
                     --timeout=$((SLEEP_TIME * 60 + 1)) \
                     --text="<big><big><b>Waiting for ${SLEEP_TIME} minutes</b></big></big>" \
-                    --button="<big><big><b>Cancel video recording</b></big></big>:0")
+                    --button="<big><big><b>Record now</b></big></big>:0" \
+                    --button="<big><big><b>End recording</b></big></big>:1")
+                    ans4=$?
+                    if [[ $ans4 == 1 ]]; then
+                        break
+                    fi
                 fi
             done
             for video in $(cat videos); do
